@@ -1,26 +1,298 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: hsl(46, 35%, 62%); /* couleur principale lux */
+  --primary-color-rgb: 191, 175, 123;
+  --black: #0a0a0a;
+  --white: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ===========================
+   RESET & BASE
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Buttons */
+button, .btn {
+  background-color: var(--primary-color);
+  color: var(--black);
+  font-weight: bold;
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: rgb(calc(var(--primary-color-rgb) * 0.9));
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links li a {
+  color: var(--white);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: var(--primary-color);
+}
+
+.burger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.nav-links.active {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+}
+
+/* ===========================
+   HERO
+=========================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  background-color: var(--black);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  animation: fadeIn 1s ease forwards;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-top: 10px;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.hero p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: var(--white);
+  animation: fadeIn 1.4s ease forwards;
+}
+
+.hero .btn {
+  margin-top: 20px;
+  animation: fadeIn 1.6s ease forwards;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ===========================
+   ABOUT
+=========================== */
+.about-section {
+  padding: 100px 50px;
+  background: #0a0a0a;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.about-section p {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--white);
+  line-height: 1.8;
+}
+
+.about-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.about-card {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.about-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about-card:hover img {
+  transform: scale(1.1);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  color: var(--primary-color);
+  transition: opacity 0.5s ease;
+}
+
+.about-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-overlay h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.card-overlay p {
+  font-size: 1rem;
+}
+
+/* ===========================
+   SERVICES / PRICING / GALLERY / TESTIMONIAL / BOOKING
+   => Utiliser la même couleur primaire pour titres, hover, boutons
+=========================== */
+
+/* (Les autres sections restent identiques au code précédent) */
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+}
+/* ===========================
+   INTRO SCREEN
+=========================== */
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Animation douce + effet luxe */
+.intro-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optionnel : glow léger premium */
+.intro-logo img {
+  filter: drop-shadow(0 0 20px rgba(191, 175, 123, 0.35));
 }
