@@ -1,5 +1,7 @@
-import "./globals.css";
+// PLUS DE "use client" ICI !
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import "./globals.css";
 
 export const metadata = {
   title: "Reflet D'Homme | Salon de Coiffure Premium",
@@ -10,8 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr">
       <body>
-        <Navbar />
+        <Navbar /> {/* Navbar est déjà un "use client" */}
         {children}
+        <Footer /> {/* Footer est déjà un "use client" */}
       </body>
     </html>
   );
