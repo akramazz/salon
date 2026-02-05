@@ -37,14 +37,34 @@ const servicesData: ServiceCardProps[] = [
   },
 ];
 
+// Animation variants Framer Motion
+const textVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
 export default function ServicesSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section className="services">
       <div className="services-header">
-        <h2>Nos Services Premium</h2>
-        <p>L’expérience grooming masculine ultime</p>
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={textVariants}
+        >
+          Nos Services Premium
+        </motion.h2>
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ ...textVariants, visible: { opacity: 1, y: 0, transition: { delay: 0.2 } } }}
+        >
+          L’expérience grooming masculine ultime
+        </motion.p>
       </div>
 
       <div className="services-grid">
@@ -55,6 +75,10 @@ export default function ServicesSection() {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             whileHover={{ scale: 1.05 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: index * 0.2 } } }}
           >
             {/* IMAGE FRONT */}
             <div
@@ -68,14 +92,33 @@ export default function ServicesSection() {
                 height={500}
                 className="card-image"
               />
-              <h3>{service.title}</h3>
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+              >
+                {service.title}
+              </motion.h3>
             </div>
 
             {/* DESCRIPTION BACK */}
             {hoveredIndex === index && (
-              <div className="card-description">
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
+              <motion.div
+                className="card-description"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
+              >
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.1 } }}
+                >
+                  {service.title}
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } }}
+                >
+                  {service.description}
+                </motion.p>
                 <div className="card-logo">
                   <Image
                     src="/images/logo.png"
@@ -84,7 +127,7 @@ export default function ServicesSection() {
                     height={60}
                   />
                 </div>
-              </div>
+              </motion.div>
             )}
           </motion.div>
         ))}

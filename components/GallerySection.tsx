@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 // Images de la galerie
 const galleryImages = [
@@ -35,17 +36,36 @@ export default function LuxuryGallery() {
     return () => cancelAnimationFrame(reqId);
   }, []);
 
+  // Variants pour le texte
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
   return (
     <section className="lux-gallery">
-      <div className="lux-gallery-title">
-        <h2>Notre Galerie</h2>
-        <p>Découvrez l’univers premium de Reflet D'Homme</p>
-      </div>
+      <motion.div
+        className="lux-gallery-title"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h2 variants={fadeUp}>Notre Galerie</motion.h2>
+        <motion.p variants={fadeUp}>Découvrez l’univers premium de Reflet D'Homme</motion.p>
+      </motion.div>
 
       <div className="lux-carousel-wrapper" ref={scrollRef}>
         <div className="lux-carousel">
           {galleryImages.map((img, index) => (
-            <div key={index} className="lux-card">
+            <motion.div
+              key={index}
+              className="lux-card"
+              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+            >
               <div className="lux-img-container">
                 <Image
                   src={img}
@@ -63,7 +83,7 @@ export default function LuxuryGallery() {
                   <span className="lux-logo-text">Reflet D'Homme</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function ContactSection() {
   const [form, setForm] = useState({
@@ -22,11 +23,24 @@ export default function ContactSection() {
     window.open(`https://wa.me/33600000000?text=${message}`, "_blank");
   };
 
+  // Animation slide from left
+  const slideFromLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
   return (
     <section className="lux-contact-section" id="contact">
       <div className="lux-contact-container">
+
         {/* Infos contact */}
-        <div className="lux-contact-info">
+        <motion.div
+          className="lux-contact-info"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={slideFromLeft}
+        >
           <h2>Entrer en contact</h2>
           <p>
             Découvrez l’expérience premium de Reflet D'Homme. Pour toute demande de rendez-vous ou renseignement, contactez-nous.
@@ -37,17 +51,25 @@ export default function ContactSection() {
           <div className="lux-contact-image">
             <Image src="/images/coupe1.jpg" alt="Reflet D'Homme" width={400} height={300} className="lux-image" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Formulaire */}
-        <form className="lux-contact-form" onSubmit={handleSubmit}>
+        <motion.form
+          className="lux-contact-form"
+          onSubmit={handleSubmit}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={slideFromLeft}
+          transition={{ delay: 0.2 }} // léger décalage pour effet
+        >
           <input type="text" name="name" placeholder="Nom" value={form.name} onChange={handleChange} required />
           <input type="tel" name="phone" placeholder="Téléphone" value={form.phone} onChange={handleChange} required />
           <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
           <input type="text" name="subject" placeholder="Sujet" value={form.subject} onChange={handleChange} />
           <textarea name="message" placeholder="Message" value={form.message} onChange={handleChange} required />
           <button type="submit">Envoyer via WhatsApp</button>
-        </form>
+        </motion.form>
       </div>
     </section>
   );
