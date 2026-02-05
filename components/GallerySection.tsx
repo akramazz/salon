@@ -3,12 +3,12 @@
 import Image from "next/image";
 
 const images = [
-  "/images/salon1.jpg",
-  "/images/salon2.jpg",
-  "/images/salon3.jpg",
-  "/images/salon4.jpg",
-  "/images/salon5.jpg",
-  "/images/salon6.jpg",
+  "/images/coupe1.jpg",
+  "/images/coupe1.jpg",
+  "/images/coupe1.jpg",
+  "/images/coupe1.jpg",
+  "/images/coupe1.jpg",
+  "/images/coupe1.jpg",
 ];
 
 export default function GallerySection() {
