@@ -56,7 +56,7 @@ export default function ServicesSection() {
             onMouseLeave={() => setHoveredIndex(null)}
             whileHover={{ scale: 1.05 }}
           >
-            {/* IMAGE */}
+            {/* IMAGE FRONT */}
             <div
               className="card-image-wrapper"
               style={{ display: hoveredIndex === index ? "none" : "flex" }}
@@ -70,21 +70,20 @@ export default function ServicesSection() {
               />
               <h3>{service.title}</h3>
             </div>
-<div className="card-logo">
+
+            {/* DESCRIPTION BACK */}
+            {hoveredIndex === index && (
+              <div className="card-description">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <div className="card-logo">
                   <Image
-                    src="/images/logo.png" // chemin de ton logo
+                    src="/images/logo.png"
                     alt="Reflet d'Homme"
                     width={60}
                     height={60}
                   />
                 </div>
-            {/* DESCRIPTION */}
-            {hoveredIndex === index && (
-              <div className="card-description">
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                {/* LOGO EN BAS */}
-                
               </div>
             )}
           </motion.div>

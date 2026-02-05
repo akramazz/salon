@@ -1,7 +1,9 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -21,10 +23,18 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="navbar-container">
-        <div className="logo">
-          <Image src="/images/logo.png" alt="Logo Reflet D'Homme" width={50} height={50} />
+        {/* LOGO CLIQUABLE */}
+        <Link href="/" className="logo">
+          <div className="logo-circle">
+            <Image
+              src="/images/logo.png"
+              alt="Logo Reflet D'Homme"
+              width={50}
+              height={50}
+            />
+          </div>
           <span>Reflet D'Homme</span>
-        </div>
+        </Link>
 
         <ul className={`nav-links ${open ? "active" : ""}`}>
           <li><a href="/">Home</a></li>
