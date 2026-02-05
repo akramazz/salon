@@ -10,7 +10,7 @@ const images = [
   "/images/enfant2.jpg",
   "/images/coupe1.jpg",
   "/images/barbe.jpg",
-  "/images/barbe.png",
+  "/images/coifer.png",
 ];
 
 export default function GallerySection() {
