@@ -1367,3 +1367,58 @@ button {
   opacity: 1;
   transform: translateX(0);
 }
+.tools-section {
+  padding: 90px 0;
+  background: #9370085c;
+  text-align: center;
+  overflow: hidden;
+}
+
+.tools-title {
+  font-size: 34px;
+  color: hsl(44, 61%, 71%);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-size: 2.8rem;
+}
+
+.tools-subtitle {
+  color: #e5e7d2;
+  margin-bottom: 50px;
+}
+
+/* SLIDER */
+.tools-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* TRACK */
+.tools-track {
+  display: flex;
+  gap: 70px;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+/* ICON */
+.tool-item {
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+.tool-item:hover {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+/* ANIMATION */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

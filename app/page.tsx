@@ -7,6 +7,7 @@ import ServicesSection from "@/components/ServicesSection";
 import PricingSection from "@/components/PricingSection";
 import GallerySection from "@/components/GallerySection";
 import ContactSection from "@/components/ContactSection";
+import ToolsScroll from "@/components/ToolsScroll";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -40,6 +41,9 @@ export default function HomePage() {
 
       {/* CONTACT */}
       <ContactSection />
+      {/* TOOLS SCROLL */} 
+      <ToolsScroll />
+      
     </main>
   );
 }
