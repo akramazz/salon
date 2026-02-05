@@ -1,49 +1,71 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
-const images = [
+// Images de la galerie
+const galleryImages = [
   "/images/coupe1.jpg",
   "/images/coupe2.jpg",
   "/images/coupe3.jpg",
   "/images/coupe4.jpg",
   "/images/enfant2.jpg",
-  "/images/coupe1.jpg",
-  "/images/barbe.jpg",
-  "/images/coifer.png",
 ];
 
-export default function GallerySection() {
+export default function LuxuryGallery() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let pos = 0;
+    let reqId: number;
+
+    const step = () => {
+      pos += 0.3; // vitesse du scroll
+      if (container.scrollWidth - container.clientWidth <= pos) pos = 0;
+      container.scrollLeft = pos;
+      reqId = requestAnimationFrame(step);
+    };
+
+    reqId = requestAnimationFrame(step);
+
+    return () => cancelAnimationFrame(reqId);
+  }, []);
+
   return (
-    <section className="gallery">
-      <div className="gallery-title">
+    <section className="lux-gallery">
+      <div className="lux-gallery-title">
         <h2>Notre Galerie</h2>
         <p>Découvrez l’univers premium de Reflet D'Homme</p>
       </div>
 
-      <div className="gallery-grid">
-        {images.map((img, index) => (
-          <div key={index} className="gallery-card">
-            <Image
-              src={img}
-              alt="Barber shop"
-              fill
-              className="gallery-img"
-              style={{ objectFit: "cover" }}
-            />
-            <div className="overlay">
-              <div className="logo-circle">
+      <div className="lux-carousel-wrapper" ref={scrollRef}>
+        <div className="lux-carousel">
+          {galleryImages.map((img, index) => (
+            <div key={index} className="lux-card">
+              <div className="lux-img-container">
                 <Image
-                  src="/images/logo.png"
-                  alt="Reflet D'Homme"
-                  width={50}
-                  height={50}
+                  src={img}
+                  alt="Galerie Reflet D'Homme"
+                  fill
+                  className="lux-img"
                 />
+                <div className="lux-logo-circle">
+                  <Image
+                    src="/images/logo.png"
+                    alt="Logo Galerie"
+                    width={40}
+                    height={40}
+                  />
+                  <span className="lux-logo-text">Reflet D'Homme</span>
+                </div>
               </div>
-              <h3 className="logo-text">Reflet D’Homme</h3>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
