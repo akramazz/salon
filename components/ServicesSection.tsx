@@ -18,7 +18,7 @@ const servicesData: ServiceCardProps[] = [
       "Expertise premium dans la taille et le soin de barbe pour un style parfait et moderne. Chaque détail compte pour un rendu ultra soigné.",
   },
   {
-    frontImg: "/images/a.jpeg",
+    frontImg: "/images/lamou.jpeg",
     title: "Coiffure Premium",
     description:
       "Coupe et coiffure haut de gamme avec des techniques personnalisées pour chaque client. Style, élégance et précision sont nos maîtres mots.",
