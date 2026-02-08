@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import "./contact.css"; // <-- IMPORT CSS ICI
@@ -8,6 +8,8 @@ import "./contact.css"; // <-- IMPORT CSS ICI
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [played, setPlayed] = useState(false); // pour mobile
 
   const sendToWhatsApp = () => {
     const phone = "+33980274111"; // Numéro WhatsApp
@@ -21,6 +23,7 @@ export default function ContactPage() {
       {/* HERO VIDEO */}
       <section className="contact-hero">
         <video
+          ref={videoRef}
           className="hero-video"
           autoPlay
           loop
@@ -28,6 +31,22 @@ export default function ContactPage() {
           playsInline
           src="/videos/coiffer.mp4"
         />
+
+        {/* BOUTON PLAY POUR MOBILE */}
+        {!played && (
+          <button
+            className="hero-play-btn"
+            onClick={() => {
+              if (videoRef.current) {
+                videoRef.current.play();
+                setPlayed(true);
+              }
+            }}
+          >
+            ▶
+          </button>
+        )}
+
         <div className="hero-overlay" />
         <motion.div
           className="hero-text"
@@ -114,7 +133,6 @@ export default function ContactPage() {
           </a>
           <h1 className="contact-title">Reflet d’Homme</h1>
         </div>
-        
       </section>
     </main>
   );
