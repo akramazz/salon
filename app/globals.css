@@ -2579,3 +2579,138 @@ button {
   color: #fff;
   letter-spacing: 1px;
 }
+/* =====================================
+   🔥 GLOBAL MOBILE FIX (IMPORTANT)
+===================================== */
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  overflow-x:hidden;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+
+/* =====================================
+   🔥 SERVICES MOBILE FIX
+===================================== */
+
+@media (max-width:768px){
+
+  .lux-services-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:60px 20px;
+  }
+
+  /* Désactive le flip (hover bug mobile) */
+  .lux-card-inner{
+    transform:none !important;
+    height:auto;
+  }
+
+  .lux-card-front{
+    position:relative;
+    height:260px;
+  }
+
+  .lux-card-back{
+    position:relative;
+    transform:none;
+    height:auto;
+    padding:20px;
+  }
+
+  .lux-service-card{
+    border-radius:16px;
+    overflow:hidden;
+  }
+
+  .service-logo{
+    left:50%;
+    bottom:15px;
+    transform:translateX(-50%);
+    opacity:1;
+  }
+
+  .service-logo img{
+    width:60px;
+    height:60px;
+  }
+
+}
+
+
+/* =====================================
+   🔥 CONTACT MOBILE FIX
+===================================== */
+
+@media (max-width:768px){
+
+  .lux-contact-section{
+    padding:70px 20px;
+    background-position:center;
+  }
+
+  .lux-contact-container{
+    flex-direction:column;
+    gap:30px;
+  }
+
+  .lux-contact-info,
+  .lux-contact-form{
+    width:100%;
+  }
+
+  .lux-contact-info{
+    padding:22px;
+  }
+
+  .lux-contact-info h2{
+    font-size:1.8rem;
+  }
+
+  .lux-contact-form{
+    gap:15px;
+  }
+
+  .lux-contact-form input,
+  .lux-contact-form textarea{
+    padding:14px;
+    font-size:0.95rem;
+  }
+
+  .lux-contact-form button{
+    width:100%;
+    padding:16px;
+  }
+
+}
+
+
+/* =====================================
+   🔥 SMALL PHONES (iPhone SE etc.)
+===================================== */
+
+@media (max-width:480px){
+
+  .lux-card-front{
+    height:230px;
+  }
+
+  .lux-contact-section{
+    padding:60px 15px;
+  }
+
+  .lux-contact-info h2{
+    font-size:1.6rem;
+  }
+
+}
