@@ -11,7 +11,7 @@ export default function Loader() {
         transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
       >
         <Image
-          src="/images/logo.png"
+          src="/images/logo2.png"
           alt="Reflet D'Homme"
           width={60}
           height={60}

@@ -1,0 +1,143 @@
+/* =======================================================
+  CONTACT PAGE ULTRA PREMIUM - REFLET D'HOMME
+======================================================= */
+
+.contact-page {
+  font-family: "Playfair Display", serif;
+  color: #e5d7a3;
+  background: #0b0b0b;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.contact-hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 11, 11, 0.6);
+}
+
+.hero-text {
+  position: absolute;
+  text-align: center;
+  z-index: 10;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+/* FORMULAIRE WHATSAPP */
+.contact-form-section {
+  padding: 100px 7%;
+  display: flex;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+}
+
+.contact-form-container {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #222;
+  color: #fff;
+  resize: none;
+}
+
+.contact-form-container button {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #bfaf7b;
+  color: #050505;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form-container button:hover {
+  background: #e5d7a3;
+  color: #0b0b0b;
+}
+
+/* INFOS SALON */
+.contact-info-section {
+  padding: 80px 7%;
+  background: #0b0b0b;
+}
+
+.contact-info-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  ;
+}
+
+.contact-info-container p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #fff;
+}
+
+/* RESEAUX SOCIAUX */
+.contact-socials-section {
+  padding: 80px 7%;
+  text-align: center;
+  background: #111;
+}
+
+.contact-socials-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons a img {
+  transition: 0.3s;
+}
+
+.social-icons a img:hover {
+  transform: scale(1.2);
+}
+.social-icons h1{
+    color: #fff;
+}

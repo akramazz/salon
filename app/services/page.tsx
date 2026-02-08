@@ -1,54 +1,151 @@
 "use client";
-import HeroFull from "@/components/HeroFull";
-import Section from "@/components/Section";
-import CardFlip from "@/components/CardFlip";
-import Footer from "@/components/Footer";
 
-export default function ServicesPage() {
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+const servicesList = [
+  {
+    title: "Moustache Trim",
+    desc: "Service Moustache Trim professionnel pour un style parfait.",
+    img: "/images/coupe1.jpg",
+  },
+  {
+    title: "Face Shave",
+    desc: "Rasage du visage précis et confortable.",
+    img: "/images/coupe2.jpg",
+  },
+  {
+    title: "Beard Trim",
+    desc: "Taille de barbe experte pour un look raffiné.",
+    img: "/images/coupe3.jpg",
+  },
+  {
+    title: "Haircut",
+    desc: "Coupe de cheveux sur-mesure.",
+    img: "/images/coupe4.jpg",
+  },
+  {
+    title: "Facial & Massage",
+    desc: "Soin du visage et massage relaxant.",
+    img: "/images/soin.jpg",
+  },
+  {
+    title: "Hair Washing",
+    desc: "Lavage des cheveux luxueux et revitalisant.",
+    img: "/images/barbe.jpg",
+  },
+  {
+    title: "Hair Dryer",
+    desc: "Brushing parfait pour un style impeccable.",
+    img: "/images/enfant2.jpg",
+  },
+  {
+    title: "Coloring",
+    desc: "Coloration professionnelle pour un rendu haut de gamme.",
+    img: "/images/barbe.png",
+  },
+];
+
+export default function Services() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
-    <>
-      <HeroFull
-        image="/images/services-hero.jpg"
-        title="CE QUE NOUS FAISONS"
-        subtitle="Nos services"
-      />
+    <main className="lux-services">
+      {/* HERO FULLSCREEN */}
+     <section className="lux-services-hero">
+  <video
+    src="/videos/vid2.mp4"
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="hero-bg-video animate-zoom"
+  />
+  <div className="hero-overlay" />
+  <div className="hero-content">
+    <motion.h1
+      initial={{ opacity: 0, y: 60 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      WHAT WE DO
+    </motion.h1>
+    <motion.p
+      initial={{ opacity: 0, y: 60 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.3 }}
+    >
+      Our Services
+    </motion.p>
+  </div>
+</section>
 
-      <Section title="Nos Services">
-        <div className="cardsGrid">
-          <CardFlip
-            frontImage="/images/service-haircut.jpg"
-            title="Taille de moustache"
-            backText="Coupe de moustache Coupe de cheveux drana lorem ipsum amet navida haretra nuam..."
+
+      {/* SERVICES GRID */}
+<section className="lux-services-grid">
+  {servicesList.map((service, index) => (
+    <motion.div
+      key={index}
+      className="lux-service-card"
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: index * 0.15 }}
+      onMouseEnter={() => setHoveredIndex(index)}
+      onMouseLeave={() => setHoveredIndex(null)}
+    >
+      <div className={`lux-card-inner ${hoveredIndex === index ? "hovered" : ""}`}>
+        {/* FRONT */}
+        <div className="lux-card-front">
+          <Image
+            src={service.img}
+            alt={service.title}
+            fill
+            className="lux-card-bg"
           />
-          <CardFlip
-            frontImage="/images/service-shave.jpg"
-            title="Rasage du visage"
-            backText="Coupe de cheveux drana lorem ipsum amet navida haretra nuam..."
-          />
-          <CardFlip
-            frontImage="/images/service-beard.jpg"
-            title="Taille de barbe"
-            backText="Coupe de cheveux drana lorem ipsum amet navida haretra nuam..."
-          />
-          <CardFlip
-            frontImage="/images/service-haircut2.jpg"
-            title="Coupe de cheveux"
-            backText="Coupe de cheveux drana lorem ipsum amet navida haretra nuam..."
-          />
-          <CardFlip
-            frontImage="/images/service-clipper.jpg"
-            title="Coupe à la tondeuse"
-            backText="Coupe de cheveux drana lorem ipsum amet navida haretra nuam..."
-          />
-          <CardFlip
-            frontImage="/images/service-facial.jpg"
-            title="Soins du visage et massages"
-            backText="Coupe de cheveux drana lorem ipsum amet navida haretra nuam..."
-          />
+          <div className="lux-card-overlay" />
         </div>
-      </Section>
 
-      <Footer />
-    </>
+        {/* BACK */}
+        <div className="lux-card-back">
+          <motion.h2
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {service.title}
+          </motion.h2>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            {service.desc}
+          </motion.p>
+
+          {/* LOGO AU HOVER */}
+          {hoveredIndex === index && (
+            <motion.div
+              className="service-logo"
+              initial={{ scale: 0, rotate: -30, opacity: 0 }}
+              animate={{ scale: 1, rotate: 0, opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <Image
+                src="/images/logo2.png"
+                alt="Logo"
+                width={80}
+                height={80}
+              />
+            </motion.div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  ))}
+</section>
+
+    </main>
   );
 }

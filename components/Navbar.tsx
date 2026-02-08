@@ -27,7 +27,7 @@ export default function Navbar() {
         <Link href="/" className="logo">
           <div className="logo-circle">
             <Image
-              src="/images/logo.png"
+              src="/images/logo2.png"
               alt="Logo Reflet D'Homme"
               width={50}
               height={50}
@@ -42,6 +42,7 @@ export default function Navbar() {
           <li><a href="/services">Services</a></li>
           <li><a href="/pricing">Pricing</a></li>
           <li><a href="/contact">Contact</a></li>
+          <li><a href="/gallery">Gallery</a></li>
         </ul>
 
         <div className="burger" onClick={() => setOpen(!open)}>

@@ -24,7 +24,7 @@ export default function HomePage() {
       {/* HERO VIDEO */}
       <HeroFull
         video="/videos/coiffer.mp4"
-        poster="/images/hero.jpg"
+        poster="/images/maps2.jpg"
         title="REFLET D'HOMME"
         subtitle="L’Excellence du grooming masculin"
         buttonText="Réservez votre rendez-vous"

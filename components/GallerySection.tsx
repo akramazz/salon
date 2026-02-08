@@ -75,7 +75,7 @@ export default function LuxuryGallery() {
                 />
                 <div className="lux-logo-circle">
                   <Image
-                    src="/images/logo.png"
+                    src="/images/logo2.png"
                     alt="Logo Galerie"
                     width={40}
                     height={40}

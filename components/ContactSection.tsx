@@ -20,7 +20,7 @@ export default function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const message = `Nom: ${form.name}%0ATéléphone: ${form.phone}%0AEmail: ${form.email}%0ASujet: ${form.subject}%0AMessage: ${form.message}`;
-    window.open(`https://wa.me/33600000000?text=${message}`, "_blank");
+    window.open(`https://wa.me/+33650534590?text=${message}`, "_blank");
   };
 
   // Animation slide from left
@@ -49,7 +49,7 @@ export default function ContactSection() {
           <p><strong>Téléphone:</strong> 09 80 27 41 11</p>
           <p><strong>Email:</strong> info@barber.com</p>
           <div className="lux-contact-image">
-            <Image src="/images/coupe1.jpg" alt="Reflet D'Homme" width={400} height={300} className="lux-image" />
+            <Image src="/images/barber.png" alt="Reflet D'Homme" width={400} height={300} className="lux-image" />
           </div>
         </motion.div>
 

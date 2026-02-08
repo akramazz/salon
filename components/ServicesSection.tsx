@@ -24,8 +24,8 @@ const servicesData: ServiceCardProps[] = [
       "Coupe et coiffure haut de gamme avec des techniques personnalisées pour chaque client. Style, élégance et précision sont nos maîtres mots.",
   },
   {
-    frontImg: "/images/soin.jpg",
-    title: "Soin & Grooming",
+    frontImg: "/images/enfant1.jpg",
+    title: "Coupe Enfant",
     description:
       "Soins du visage et du cuir chevelu pour une expérience luxe complète et relaxante. Produits premium pour un résultat visible et durable.",
   },
@@ -121,7 +121,7 @@ export default function ServicesSection() {
                 </motion.p>
                 <div className="card-logo">
                   <Image
-                    src="/images/logo.png"
+                    src="/images/logo2.png"
                     alt="Reflet d'Homme"
                     width={60}
                     height={60}
