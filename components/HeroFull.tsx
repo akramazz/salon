@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 
 type HeroFullProps = {
   video: string;
@@ -22,10 +23,22 @@ export default function HeroFull({
   const whatsappNumber = "0980274111";
   const whatsappLink = `https://wa.me/${whatsappNumber}`;
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [played, setPlayed] = useState(false);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      videoRef.current.play();
+      setPlayed(true);
+    }
+  };
+
   return (
     <section className="hero-full">
       {/* VIDEO BACKGROUND */}
       <video
+        ref={videoRef}
         className="hero-bg"
         src={video}
         poster={poster}
@@ -36,7 +49,14 @@ export default function HeroFull({
         preload="auto"
       />
 
-      {/* OVERLAY CINÉMA */}
+      {/* PLAY BUTTON (MOBILE) */}
+      {!played && (
+        <button className="hero-play-btn" onClick={handlePlay}>
+          ▶
+        </button>
+      )}
+
+      {/* OVERLAY */}
       <div className="hero-overlay" />
 
       {/* CONTENT */}
@@ -47,7 +67,11 @@ export default function HeroFull({
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05 * index, duration: 0.6, ease: "easeOut" }}
+              transition={{
+                delay: 0.05 * index,
+                duration: 0.6,
+                ease: "easeOut",
+              }}
               className="lux-letter"
             >
               {letter}
