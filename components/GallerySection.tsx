@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 // Images de la galerie
 const galleryImages = [
@@ -12,6 +12,16 @@ const galleryImages = [
   "/images/coupe4.jpg",
   "/images/enfant2.jpg",
 ];
+
+// Variant corrigé
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeInOut" }, // ✅ string valide
+  },
+};
 
 export default function LuxuryGallery() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -36,12 +46,6 @@ export default function LuxuryGallery() {
     return () => cancelAnimationFrame(reqId);
   }, []);
 
-  // Variants pour le texte
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
   return (
     <section className="lux-gallery">
       <motion.div
@@ -51,7 +55,9 @@ export default function LuxuryGallery() {
         viewport={{ once: true, amount: 0.3 }}
       >
         <motion.h2 variants={fadeUp}>Notre Galerie</motion.h2>
-        <motion.p variants={fadeUp}>Découvrez l’univers premium de Reflet D'Homme</motion.p>
+        <motion.p variants={fadeUp}>
+          Découvrez l’univers premium de Reflet D'Homme
+        </motion.p>
       </motion.div>
 
       <div className="lux-carousel-wrapper" ref={scrollRef}>
