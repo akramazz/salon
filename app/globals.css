@@ -2170,7 +2170,7 @@ button {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("/images/maps2.jpg") center/cover no-repeat;
+  background: url("/images/post.jpeg") center/cover no-repeat;
   filter: brightness(0.5);
   z-index: 0;
 }

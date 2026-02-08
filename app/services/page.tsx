@@ -69,15 +69,13 @@ export default function Services() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      WHAT WE DO
-    </motion.h1>
+CE QUE NOUS FAISONS    </motion.h1>
     <motion.p
       initial={{ opacity: 0, y: 60 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.3 }}
     >
-      Our Services
-    </motion.p>
+Nos Services    </motion.p>
   </div>
 </section>
 

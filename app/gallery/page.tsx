@@ -43,14 +43,14 @@ export default function GalleryPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            OUR GALLERY
+            Styles de Luxe & Premium{" "}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            Luxury & Premium Styles
+            Styles Haut de Gamme{" "}
           </motion.p>
         </div>
       </section>
@@ -68,7 +68,13 @@ export default function GalleryPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Image src={src} alt={`Gallery ${index}`} width={400} height={400} className="gallery-img" />
+              <Image
+                src={src}
+                alt={`Gallery ${index}`}
+                width={400}
+                height={400}
+                className="gallery-img"
+              />
             </motion.div>
           ))}
         </div>

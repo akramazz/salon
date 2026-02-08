@@ -12,25 +12,25 @@ type ServiceCardProps = {
 
 const servicesData: ServiceCardProps[] = [
   {
-    frontImg: "/images/barbe.jpg",
+    frontImg: "/images/b.jpeg",
     title: "Barbe & Taille",
     description:
       "Expertise premium dans la taille et le soin de barbe pour un style parfait et moderne. Chaque détail compte pour un rendu ultra soigné.",
   },
   {
-    frontImg: "/images/coifer.png",
+    frontImg: "/images/a.jpeg",
     title: "Coiffure Premium",
     description:
       "Coupe et coiffure haut de gamme avec des techniques personnalisées pour chaque client. Style, élégance et précision sont nos maîtres mots.",
   },
   {
-    frontImg: "/images/enfant1.jpg",
+    frontImg: "/images/c.jpeg",
     title: "Coupe Enfant",
     description:
       "Soins du visage et du cuir chevelu pour une expérience luxe complète et relaxante. Produits premium pour un résultat visible et durable.",
   },
   {
-    frontImg: "/images/coupe1.jpg",
+    frontImg: "/images/f.jpeg",
     title: "Coupe Classique",
     description:
       "Coupe élégante et précise adaptée à votre style, avec un service ultra professionnel et personnalisé selon vos envies.",
