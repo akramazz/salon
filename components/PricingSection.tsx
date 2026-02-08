@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const services = [
   {
@@ -24,13 +24,13 @@ const services = [
   },
 ];
 
-// Variants Framer Motion pour l'effet fade-up
-const fadeUp = {
+// Variant Framer Motion corrigé
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (custom: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: custom * 0.2, ease: "easeOut" },
+    transition: { duration: 0.8, delay: custom * 0.2, ease: "easeInOut" }, // ✅ string valide
   }),
 };
 

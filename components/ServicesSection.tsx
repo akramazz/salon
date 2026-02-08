@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
 type ServiceCardProps = {
@@ -37,10 +37,10 @@ const servicesData: ServiceCardProps[] = [
   },
 ];
 
-// Animation variants Framer Motion
-const textVariants = {
+// Variant corrigé compatible TS
+const textVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeInOut" } },
 };
 
 export default function ServicesSection() {
@@ -61,7 +61,10 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          variants={{ ...textVariants, visible: { opacity: 1, y: 0, transition: { delay: 0.2 } } }}
+          variants={{
+            ...textVariants,
+            visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2, ease: "easeInOut" } },
+          }}
         >
           L’expérience grooming masculine ultime
         </motion.p>
@@ -78,7 +81,10 @@ export default function ServicesSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: index * 0.2 } } }}
+            variants={{
+              hidden: { opacity: 0, y: 40 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: index * 0.2, ease: "easeInOut" } },
+            }}
           >
             {/* IMAGE FRONT */}
             <div
@@ -94,7 +100,7 @@ export default function ServicesSection() {
               />
               <motion.h3
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: "easeInOut" } }}
               >
                 {service.title}
               </motion.h3>
@@ -105,17 +111,17 @@ export default function ServicesSection() {
               <motion.div
                 className="card-description"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
               >
                 <motion.h3
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.1 } }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.1, ease: "easeInOut" } }}
                 >
                   {service.title}
                 </motion.h3>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2, ease: "easeInOut" } }}
                 >
                   {service.description}
                 </motion.p>
