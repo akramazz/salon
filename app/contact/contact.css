@@ -171,3 +171,55 @@
     display: none;
   }
 }
+/* BOUTON PLAY VIDEO */
+.hero-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(191, 175, 123, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  font-size: 2rem;
+  color: #050505;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.hero-play-btn:hover {
+  background: rgba(191, 175, 123, 1);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* TEXTE HERO */
+.hero-text h1 {
+  font-size: 3rem; /* taille desktop */
+}
+
+.hero-text p {
+  font-size: 1.5rem; /* taille desktop */
+  max-width: 600px;
+}
+
+/* TEXTE SUR MOBILE */
+@media screen and (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-play-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
